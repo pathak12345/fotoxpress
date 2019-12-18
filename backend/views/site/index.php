@@ -7,7 +7,7 @@ $this->title = 'Photo';
 <div class="site-index" >
 
     <div class="jumbotron">
-        <h1>FotoXpress</h1>
+        <h1>FotoXpress By AKP Team</h1>
 
         <p class="lead">You have successfully created your Yii-powered application.</p>
 
