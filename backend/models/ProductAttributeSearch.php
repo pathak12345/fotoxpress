@@ -18,7 +18,7 @@ class ProductAttributeSearch extends ProductAttribute
     public function rules()
     {
         return [
-            [['id', 'product_id', 'max_height', 'max_width'], 'integer'],
+            [['id', 'product_id', 'max_height', 'max_width', 'stock_quantity'], 'integer'],
             [['attribute_name', 'attribute_value'], 'safe'],
             [['purchase_cost', 'selling_price'], 'number'],
         ];
@@ -66,6 +66,7 @@ class ProductAttributeSearch extends ProductAttribute
             'selling_price' => $this->selling_price,
             'max_height' => $this->max_height,
             'max_width' => $this->max_width,
+            'stock_quantity' => $this->stock_quantity,
         ]);
 
         $query->andFilterWhere(['like', 'attribute_name', $this->attribute_name])
@@ -100,6 +101,7 @@ class ProductAttributeSearch extends ProductAttribute
             'selling_price' => $this->selling_price,
             'max_height' => $this->max_height,
             'max_width' => $this->max_width,
+            'stock_quantity' => $this->stock_quantity,
         ]);
 
         $query->andFilterWhere(['like', 'attribute_name', $this->attribute_name])

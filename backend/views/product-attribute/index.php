@@ -30,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'attribute_value',
             'purchase_cost',
             'selling_price',
+            'stock_quantity',
             // 'max_height',
             // 'max_width',
 

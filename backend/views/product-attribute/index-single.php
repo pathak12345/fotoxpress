@@ -41,6 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'selling_price',
             'max_height',
             'max_width',
+            'stock_quantity',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

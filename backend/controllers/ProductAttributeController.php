@@ -9,6 +9,7 @@ use backend\models\ProductAttributeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ProductAttributeController implements the CRUD actions for ProductAttribute model.
@@ -79,8 +80,16 @@ class ProductAttributeController extends Controller
         $model = new ProductAttribute();
         $productModel = Product::findOne($product_id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->product_image = UploadedFile::getInstance($model, 'product_image');
+            if ($model->upload()) {
+                $model->product_image = 0;
+                if($model->save()){
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }else{
+                    echo '<pre>'; print_r($model->getErrors()); exit;
+                }
+            }
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -118,9 +127,11 @@ class ProductAttributeController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $product_id = $model->product_id;
+        $model->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['index-single', 'product_id' => $product_id]);
     }
 
     /**

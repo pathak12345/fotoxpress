@@ -28,6 +28,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'max_width')->textInput() ?>
 
+    <?= $form->field($model, 'stock_quantity')->textInput() ?>
+
+    <?= $form->field($model, 'product_image')->fileInput() ?>
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
@@ -43,6 +44,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'selling_price',
             'max_height',
             'max_width',
+            'stock_quantity',
+            [
+                'attribute' => 'product_image',
+                'label' => 'Product Image',
+                'format' => ['image', ['height' => '100px']],
+                'value' => $model->media_id ?  Url::to('@web/uploads/product_images/' . $model->media->file_name) : null,
+            ],
         ],
     ]) ?>
 
