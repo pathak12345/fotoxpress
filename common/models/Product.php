@@ -20,6 +20,9 @@ class Product extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+
+    public $product_image;
+    
     public static function tableName()
     {
         return 'product';

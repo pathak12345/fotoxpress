@@ -19,9 +19,7 @@ $this->title = 'Photo';
         <div class="row">            
             <div class="col-lg-12" style="padding-left:250px">
 
-               
-            
-                  
+            </div>
         </div>
 
     </div>

@@ -15,7 +15,7 @@ use yii\widgets\ActiveForm;
 use common\models\User;
 
 AppAsset::register($this);
-$this->title = "FotoXpress"
+$this->title = "BookMyPhoto"
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -39,7 +39,7 @@ $this->title = "FotoXpress"
       <span class="logo-mini"><b>FX</b></span>
       <!-- <span class="logo-mini logo-mini-custom"><img height="45px" src="<?=Url::base().'/images/red_carpet_logo.png'?>"></span> -->
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>FotoXpress</b></span>
+      <span class="logo-lg"><b>BookMyPhoto</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">

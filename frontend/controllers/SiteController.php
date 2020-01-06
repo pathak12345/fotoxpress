@@ -8,6 +8,8 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use common\models\Product;
+use common\models\Category;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
@@ -72,7 +74,6 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $this->layout = "main_default";
         return $this->render('index');
     }
 
@@ -103,6 +104,13 @@ class SiteController extends Controller
      * @return mixed
      */
     public function actionLogout()
+    {
+        Yii::$app->user->logout();
+
+        return $this->goHome();
+    }
+
+    public function actionLogoutUser()
     {
         Yii::$app->user->logout();
 
@@ -210,5 +218,20 @@ class SiteController extends Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+
+    public function actionCategory($id)
+    {
+        $categoryProducts = Product::find()->where(['category_id' => $id])->all();
+        $categoryModel = Category::findOne($id);
+        return $this->render('category', [
+            'categoryProducts' => $categoryProducts,
+            'categoryModel' => $categoryModel,
+        ]);
+    }
+
+    public function actionProductDetail()
+    {
+        return $this->render('product-detail');
     }
 }
