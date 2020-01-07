@@ -24,9 +24,11 @@ class Media extends \yii\db\ActiveRecord
      */
 
     const TYPE_PRODUCT_IMAGE = 1;
+    const TYPE_TEMP_EDIT = 2;
 
     public static $media_types = [
         self::TYPE_PRODUCT_IMAGE => 'Product Image',
+        self::TYPE_TEMP_EDIT => 'Temporary Editing Image',
     ];
 
     public static function tableName()

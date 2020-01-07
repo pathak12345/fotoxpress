@@ -8,7 +8,7 @@ use yii\helpers\Url;
 
 		<div class="row">
 			<?php
-				foreach ($categoryProducts as $key => $value) {
+				foreach ($categoryProducts as $key => $product) {
 			?>
 					<div class="col-md-3">
 		               	<div class="single-product mb-40">
@@ -22,13 +22,13 @@ use yii\helpers\Url;
 			                        <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
 			                        <i class="zmdi zmdi-eye"></i>
 			                        </a>
-			                        <a href="#" title="Add to cart">
+			                        <a href="<?=Url::to(['site/product-detail', 'id' => $product->id])?>" title="Add to cart">
 			                        <i class="zmdi zmdi-shopping-cart"></i>
 			                        </a>
 			                    </div>
 			                </div>
 			                <div class="product-content text-center text-uppercase">
-			                    <a href="product-details.php" title="T- shirt">T- shirt</a>
+			                    <a href="product-details.php" title="T-shirt">T-shirt</a>
 			                    <div class="product-price">
 			                    	<span class="new-price">₹ 185.00</span>
 			                    </div>

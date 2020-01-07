@@ -5,11 +5,13 @@ use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
 use common\models\Product;
 use common\models\Category;
+use common\models\UploadForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
@@ -230,8 +232,24 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionProductDetail()
+    public function actionProductDetail($id)
     {
-        return $this->render('product-detail');
+        $productModel = Product::findOne($id);
+        $uploadModel = new UploadForm(); 
+        return $this->render('product-detail', ['productModel' => $productModel, 'uploadModel' => $uploadModel]);
+    }
+
+    public function actionEditImage()
+    {
+        $uploadModel = new UploadForm(); 
+        if (Yii::$app->request->post()) {
+            $uploadModel->imageFile = UploadedFile::getInstance($uploadModel, 'imageFile');
+            //echo '<pre>'; print_r($uploadModel->imageFile); exit;
+            if ($media_id = $uploadModel->upload()) {
+                $mediaModel = Media::findOne($media_id);
+                // File uploaded
+                return $this->render('edit-image', ['mediaModel' => $mediaModel]);
+            }
+        }
     }
 }
