@@ -8,9 +8,10 @@ use yii\web\Controller;
 use yii\web\UploadedFile;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use common\models\LoginForm;
+use common\models\Media;
 use common\models\Product;
 use common\models\Category;
+use common\models\LoginForm;
 use common\models\UploadForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
@@ -247,6 +248,7 @@ class SiteController extends Controller
             //echo '<pre>'; print_r($uploadModel->imageFile); exit;
             if ($media_id = $uploadModel->upload()) {
                 $mediaModel = Media::findOne($media_id);
+                echo '<pre>'; print_r($mediaModel); exit;
                 // File uploaded
                 return $this->render('edit-image', ['mediaModel' => $mediaModel]);
             }

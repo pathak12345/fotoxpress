@@ -26,7 +26,8 @@ class ManaliAppAsset extends AssetBundle
         // 'manali/js/particles.js',
         'manali/js/plugins.js',
         'manali/js/main.js',
-        'https://cdn.jsdelivr.net/gh/BossBele/cropzee@latest/dist/cropzee.js',
+        'manali/js/cropzee.js',
+        //'https://cdn.jsdelivr.net/gh/BossBele/cropzee@latest/dist/cropzee.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

@@ -154,4 +154,10 @@ use yii\widgets\ActiveForm;
         }
     ");
 
+    $this->registerJs("
+        $(document).ready(function(){
+            $('#uploadform-imagefile').cropzee();
+        });
+    ");
+
 ?>
