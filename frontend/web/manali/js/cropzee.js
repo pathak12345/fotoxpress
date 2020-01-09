@@ -202,7 +202,15 @@ jQuery.fn.extend({
                 setTimeout(function(){
                     // the css-only modal is called via href see https://hunzaboy.github.io/Light-Modal/#
                     //window.location = window.location.pathname + "#cropzee-modal";
-                    window.location = window.location.href + "#cropzee-modal";
+                    checkUrl = window.location.href
+                    if(checkUrl.includes("#cropzee-modal")){
+                        filterUrlIndex = checkUrl.indexOf("#cropzee-modal");
+                        urlNew = checkUrl.substr(0, filterUrlIndex);
+                        window.location = urlNew + "#cropzee-modal";
+                    }else{
+                        window.location = window.location.href + "#cropzee-modal";
+                    }
+                    
                     // function to trigger croppr.js on picture in modal
                     cropzeeTriggerCroppr();
                 }, 50);

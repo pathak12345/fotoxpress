@@ -84,15 +84,23 @@ use yii\widgets\ActiveForm;
                             </div>                                  
                         </div>
                         <div class="image-input">
+                            
                             <?php $form = ActiveForm::begin([
-    'method' => 'post',
-    'action' => ['site/edit-image'],
-]); ?>
+                                'method' => 'post',
+                                'action' => ['site/edit-image'],
+                            ]); ?>
+                            <div class="img-edit">
+                                   
+                                <label for="uploadform-imagefile" class="image-previewer" data-cropzee="uploadform-imagefile"></label>
                                 <?= $form->field($uploadModel, 'imageFile')->fileInput() ?>
-                                <div class="form-group">
-                                    <?= Html::submitButton('Proceed', ['class' => 'btn btn-success']) ?>
-                                </div>
+                                
+                            </div>
+                            <div class="form-group">
+                                <?= Html::submitButton('Proceed', ['class' => 'btn btn-success']) ?>
+                            </div>
+
                             <?php ActiveForm::end(); ?>
+
                         </div>
                       
                     </div>
@@ -151,6 +159,10 @@ use yii\widgets\ActiveForm;
     $this->registerCss("
         .image-input{
             margin: 20px 0;
+        }
+
+        .img-edit{
+            max-height: 300px;
         }
     ");
 
