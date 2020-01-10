@@ -1,5 +1,6 @@
 <?php
 
+use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -15,10 +16,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?php //echo Html::a('Add Product Size', ['product-size/create', 'product_id' => $model->id], ['class' => 'btn btn-success']) ?>
-        <?= Html::a('Add Product Attribute', ['product-attribute/create', 'product_id' => $model->id], ['class' => 'btn btn-success']) ?>
-        <?php //echo Html::a('View Product Sizes', ['product-size/index-single', 'product_id' => $model->id], ['class' => 'btn btn-info']) ?>
-        <?= Html::a('View Product Attributes', ['product-attribute/index-single', 'product_id' => $model->id], ['class' => 'btn btn-info']) ?>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
@@ -33,15 +30,31 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
+            'category_id',
+            //'media_id',
             [
-                'attribute' => 'category_id',
-                'value' => isset($model->category->name) ? $model->category->name : NULL,
+                'attribute' => 'media_id',
+                'label' => 'Product Image',
+                'format' => ['image', ['height' => '100px']],
+                'value' => $model->media_id ?  Url::to('@web/uploads/product_images/' . $model->media->file_name) : null,
             ],
-            /*[
-                'attribute' => 'product_size',
-                'value' => $model->getProductSizesText()
-            ],*/
             'name',
+            'description:ntext',
+            'stock_quantity',
+            'purchase_cost',
+            'selling_price',
+            'max_height',
+            'max_width',
+            'delivery_information:ntext',
+            'care_instruction:ntext',
+            [
+                'attribute' => 'created_by',
+                'value' => $model->createdBy->name,
+            ],
+            [
+                'attribute' => 'updated_by',
+                'value' => $model->updatedBy->name,
+            ],
             'created_at:datetime',
             'updated_at:datetime',
         ],

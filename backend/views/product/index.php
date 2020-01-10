@@ -25,8 +25,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            //'id',
             [
                 'attribute' => 'category_id',
                 'value' => function($model){
@@ -34,9 +32,20 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
                 'filter' => Html::activeDropDownList($searchModel, 'category_id', ArrayHelper::map(Category::find()->asArray()->all(), 'id', 'name'),['class'=>'form-control','prompt' => 'Select Category'])
             ],
+            //'media_id',
             'name',
-            'created_at:datetime',
-            'updated_at:datetime',
+            //'description:ntext',
+            'stock_quantity',
+            'purchase_cost',
+            'selling_price',
+            'max_height',
+            'max_width',
+            // 'delivery_information:ntext',
+            // 'care_instruction:ntext',
+            // 'created_by',
+            // 'updated_by',
+            // 'created_at',
+            // 'updated_at',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

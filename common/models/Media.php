@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\Url;
 use yii\behaviors\TimestampBehavior;
 
 /**
@@ -72,13 +73,13 @@ class Media extends \yii\db\ActiveRecord
         ];
     }
 
-    public function beforeDelete(){
-        if(parent::beforeDelete()){
-            echo "before delete has been executed"; exit;
-            //MediaUploader::deleteFile($this->aws_url);
-            return true;
-        } else {
+    public function beforeDelete()
+    {
+        if (!parent::beforeDelete()) {
             return false;
         }
+        $imgUrl = Url::to('@backend/web/uploads/product_images/' . $this->file_name);
+        unlink($imgUrl);
+        return true;
     }
 }

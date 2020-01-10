@@ -9,6 +9,7 @@ use backend\models\ProductSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -67,8 +68,15 @@ class ProductController extends Controller
         $model = new Product();
         $categories = Category::find()->all();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->product_image = UploadedFile::getInstance($model, 'product_image');
+            if ($model->upload()) {
+                if($model->save()){
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }else{
+                    echo '<pre>'; print_r($model->getErrors()); exit;
+                }
+            }
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -88,8 +96,31 @@ class ProductController extends Controller
         $model = $this->findModel($id);
         $categories = Category::find()->all();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->product_image = UploadedFile::getInstance($model, 'product_image');
+            if(isset($model->product_image)){
+                // Delete existing image //
+                $model->media->delete();
+                // Delete existing image //
+                $model->upload();
+            }
+
+            if($model->save()){
+                return $this->redirect(['view', 'id' => $model->id]);
+            }else{
+                echo '<pre>'; print_r($model->getErrors()); exit;
+            }
+            // if ($model->upload()) {
+            //     $model->product_image = 0;
+            //     if($model->save()){
+            //         return $this->redirect(['view', 'id' => $model->id]);
+            //     }else{
+            //         echo '<pre>'; print_r($model->getErrors()); exit;
+            //     }
+            // }else{
+            //     echo 'Image upload has been failed'; exit;
+            // }
+
         } else {
             return $this->render('update', [
                 'model' => $model,
