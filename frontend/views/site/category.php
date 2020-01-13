@@ -15,7 +15,7 @@ use yii\helpers\Url;
 		                  	<div class="product-img-content mb-20">
 			                    <div class="product-img">
 			                        <a href="product-details.php">
-			                        <img src="<?= Url::to('@web/manali/assets/images/product4.png')?>" alt="">
+			                        <img src="<?= 'https://localhost/projects/fotoxpress/backend/web/uploads/product_images/' . $product->media->file_name ?>" alt="">
 			                        </a>
 			                     </div>
 			                    <div class="product-action text-center">
@@ -28,9 +28,9 @@ use yii\helpers\Url;
 			                    </div>
 			                </div>
 			                <div class="product-content text-center text-uppercase">
-			                    <a href="product-details.php" title="T-shirt">T-shirt</a>
+			                    <a href="product-details.php" title="T-shirt"><?=$product->name?></a>
 			                    <div class="product-price">
-			                    	<span class="new-price">₹ 185.00</span>
+			                    	<span class="new-price">₹ <?=$product->selling_price?></span>
 			                    </div>
 			                </div>
 		               	</div>

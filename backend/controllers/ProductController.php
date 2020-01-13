@@ -98,29 +98,24 @@ class ProductController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             $model->product_image = UploadedFile::getInstance($model, 'product_image');
+
             if(isset($model->product_image)){
-                // Delete existing image //
-                $model->media->delete();
-                // Delete existing image //
-                $model->upload();
+                if(isset($model->media_id)){
+                    $oldMediaModel = $model->media;
+                }
+                if($model->upload()){
+                    if($model->save()){
+                        if(isset($oldMediaModel)){
+                            $oldMediaModel->delete();  
+                        }
+                        return $this->redirect(['view', 'id' => $model->id]);
+                    }
+                }
             }
 
             if($model->save()){
                 return $this->redirect(['view', 'id' => $model->id]);
-            }else{
-                echo '<pre>'; print_r($model->getErrors()); exit;
             }
-            // if ($model->upload()) {
-            //     $model->product_image = 0;
-            //     if($model->save()){
-            //         return $this->redirect(['view', 'id' => $model->id]);
-            //     }else{
-            //         echo '<pre>'; print_r($model->getErrors()); exit;
-            //     }
-            // }else{
-            //     echo 'Image upload has been failed'; exit;
-            // }
-
         } else {
             return $this->render('update', [
                 'model' => $model,

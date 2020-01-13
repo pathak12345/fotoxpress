@@ -132,6 +132,7 @@ class Product extends \yii\db\ActiveRecord
             $media->file_size = $this->product_image->size;
             $media->save();
             $this->media_id = $media->id;
+            //echo '<pre>'; print_r($media); exit;
 
             return true;
         } else {

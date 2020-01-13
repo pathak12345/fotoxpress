@@ -78,6 +78,7 @@ class Media extends \yii\db\ActiveRecord
         if (!parent::beforeDelete()) {
             return false;
         }
+
         $imgUrl = Url::to('@backend/web/uploads/product_images/' . $this->file_name);
         unlink($imgUrl);
         return true;

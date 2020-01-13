@@ -16,7 +16,6 @@ use yii\widgets\ActiveForm;
                         <div id="product-img-content">
                             <div id="my-tab-content" class="tab-content mb-30">
                                 <div class="tab-pane b-img active" id="view1">
-
                                     <a class="venobox" href="<?= Url::to('@web/manali/images/product/product-details/1.jpg')?>" data-gall="gallery" title=""><img src="<?= Url::to('@web/manali/images/product/product-details/1.jpg')?>" alt=""></a>
                                 </div>
                                 <div class="tab-pane b-img" id="view2">
@@ -112,38 +111,20 @@ use yii\widgets\ActiveForm;
                         <div class="p-details-tab">
                             <ul class="nav nav-tabs text-uppercase mb-20" role="tablist">
                                 <li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Description</a></li>
-                                <li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">Reviews</a></li>
-                                <li role="presentation"><a href="#tag" aria-controls="tag" role="tab" data-toggle="tab">Product Tags</a></li>
+                                <li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">Delivery Information</a></li>
+                                <li role="presentation"><a href="#tag" aria-controls="tag" role="tab" data-toggle="tab">Care Instructions</a></li>
                             </ul>                             
                         </div>
                         <div class="clearfix"></div>
                         <div class="tab-content review">
                             <div role="tabpanel" class="tab-pane active" id="description">
-                                <p>These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to and    what we like best, every pleasure is to be welcomed and every pain avoided. But in cetain circumstances and owing to the claims of duty or the obligations of busness it will frequently occur that pleasures have to be repudiatedTemporibus recaae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus to a maiores maiores alias consequatur aut  endis doloriu asperiores repellat.maiores what we like best, every pleasure is to be welcomed and every pain avoided. But in cetain circumstances and owing to the claims.</p>
-                                <p>maiores alias consequatur aut  endis doloriu asperiores repellat.maiores what we like best, every pleasure is to be welcomed and every pain avoided. But in cetain circumstances and owing to the claims of duty or the obligations of busness it will frequently occur that pleasures have to be repudiatedTemporibus recaae. Itaque earum rerum hic tenetur a sapiente delectus.</p>
+                                <p><?=$productModel->description?></p>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="reviews">
-                                <table class="table-data-sheet">
-                                    <tbody>
-                                        <tr class="odd">
-                                            <td>Compositions</td>
-                                            <td>Cotton</td>
-                                        </tr>
-                                        <tr class="even">
-                                            <td>Styles</td>
-                                            <td>Casual</td>
-                                        </tr>
-                                        <tr class="odd">
-                                            <td>Properties</td>
-                                            <td>Short Sleeve</td>
-                                        </tr>
-                                    </tbody>
-                               </table>
+                                <p><?=$productModel->delivery_information?></p>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="tag">
-                                <div id="product-comments-block-tab">
-                                    <a href="#" class="comment-btn"><span>Be the first to write your review!</span></a>
-                                </div>
+                                <p><?=$productModel->care_instructions?></p>
                             </div>
                         </div>                                
                     </div>
