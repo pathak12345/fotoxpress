@@ -14,6 +14,8 @@ var dependencies =
 $("body").after(dependencies);
 // used jQuery.fn.extend() method to provide new methods that can be chained to the jQuery() function
 // in our case - $(element).cropzee()
+
+var adiyogi;
 jQuery.fn.extend({
   cropzee: function (options = {
         // croppr.js options
@@ -132,6 +134,7 @@ jQuery.fn.extend({
             } else {
                 window.cropzeeReturnImage = [];
                 cropzeeReturnImage[id] = canvas.toDataURL(options.imageExtension);
+                adiyogi = cropzeeReturnImage[id];
             }
             // cropping finished, close modal
             closeModal();

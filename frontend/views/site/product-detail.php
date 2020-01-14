@@ -16,23 +16,8 @@ use yii\widgets\ActiveForm;
                         <div id="product-img-content">
                             <div id="my-tab-content" class="tab-content mb-30">
                                 <div class="tab-pane b-img active" id="view1">
-                                    <a class="venobox" href="<?= Url::to('@web/manali/images/product/product-details/1.jpg')?>" data-gall="gallery" title=""><img src="<?= Url::to('@web/manali/images/product/product-details/1.jpg')?>" alt=""></a>
+                                    <a class="venobox" href="#" data-gall="gallery" title=""><img src="<?= 'https://localhost/projects/fotoxpress/backend/web/uploads/product_images/' . $productModel->media->file_name ?>" alt=""></a>
                                 </div>
-                                <div class="tab-pane b-img" id="view2">
-                                    <a class="venobox" href="<?= Url::to('@web/manali/images/product/product-details/2.jpg')?>" data-gall="gallery" title=""><img src="<?= Url::to('@web/manali/images/product/product-details/2.jpg')?>" alt=""></a>
-                                </div>
-                                <div class="tab-pane b-img" id="view3">
-                                    <a class="venobox" href="<?= Url::to('@web/manali/images/product/product-details/3.jpg')?>" data-gall="gallery" title=""><img src="<?= Url::to('@web/manali/images/product/product-details/3.jpg')?>" alt=""></a>
-                                </div>
-                                <div class="tab-pane b-img" id="view4">
-                                    <a class="venobox" href="<?= Url::to('@web/manali/images/product/product-details/4.jpg')?>" data-gall="gallery" title=""><img src="<?= Url::to('@web/manali/images/product/product-details/4.jpg')?>" alt=""></a>
-                                </div>
-                            </div>
-                            <div id="viewproduct" class="nav nav-tabs product-view bxslider" data-tabs="tabs">
-                                <div class="pro-view b-img active"><a href="#view1" data-toggle="tab"><img src="<?= Url::to('@web/manali/images/product/product-details/s-1.jpg')?>" alt=""></a></div>
-                                <div class="pro-view b-img"><a href="#view2" data-toggle="tab"><img src="<?= Url::to('@web/manali/images/product/product-details/s-2.jpg')?>" alt=""></a></div>
-                                <div class="pro-view b-img"><a href="#view3" data-toggle="tab"><img src="<?= Url::to('@web/manali/images/product/product-details/s-3.jpg')?>" alt=""></a></div>
-                                <div class="pro-view b-img"><a href="#view4" data-toggle="tab"><img src="<?= Url::to('@web/manali/images/product/product-details/s-4.jpg')?>" alt=""></a></div>
                             </div>
                         </div>
                     </div>
@@ -40,23 +25,23 @@ use yii\widgets\ActiveForm;
                 <div class="col-sm-7">
                     <div class="product-details-content">
                         <div class="product-content text-uppercase">
-                            <a title="Product Name" href="product-details.html">Product Name</a>
-                            <div class="rating-icon pb-30 mt-10">
+                            <a title="Product Name" href="product-details.html"><?=$productModel->name?></a>
+                            <!-- <div class="rating-icon pb-30 mt-10">
                                 <i class="zmdi zmdi-star"></i>
                                 <i class="zmdi zmdi-star"></i>
                                 <i class="zmdi zmdi-star"></i>
                                 <i class="zmdi zmdi-star-half"></i>
                                 <i class="zmdi zmdi-star-half"></i>
-                            </div>
+                            </div> -->
                             <div class="product-price pb-30">
-                                <span class="new-price">₹ 185.00</span>
-                                <span class="old-price">₹ 200.00</span>
+                                <span class="new-price">₹ <?=$productModel->selling_price?></span>
+                                <!-- <span class="old-price">₹ 200.00</span> -->
                             </div>
                         </div>
-                        <div class="product-view pb-30">
+                        <!-- <div class="product-view pb-30">
                             <h4 class="product-details-tilte text-uppercase">overview</h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. luptate. </p>
-                        </div>
+                        </div> -->
                         <div class="product-size text-uppercase pb-40">
                             <h4 class="product-details-tilte text-uppercase pb-10">size</h4>
                             <ul>
@@ -95,7 +80,7 @@ use yii\widgets\ActiveForm;
                                 
                             </div>
                             <div class="form-group">
-                                <?= Html::submitButton('Proceed', ['class' => 'btn btn-success']) ?>
+                                <?= Html::submitButton('Proceed', ['class' => 'btn btn-success proceed-btn']) ?>
                             </div>
 
                             <?php ActiveForm::end(); ?>
@@ -124,7 +109,7 @@ use yii\widgets\ActiveForm;
                                 <p><?=$productModel->delivery_information?></p>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="tag">
-                                <p><?=$productModel->care_instructions?></p>
+                                <p><?=$productModel->care_instruction?></p>
                             </div>
                         </div>                                
                     </div>
@@ -150,6 +135,12 @@ use yii\widgets\ActiveForm;
     $this->registerJs("
         $(document).ready(function(){
             $('#uploadform-imagefile').cropzee();
+
+            $('.proceed-btn').on('click', function(e){
+                e.preventDefault();
+                alert(adiyogi);
+                console.log(adiyogi);
+            });
         });
     ");
 
